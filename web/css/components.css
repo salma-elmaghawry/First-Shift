@@ -1,5 +1,6 @@
 /* FirstShift components. Every color comes from tokens.css; no literal colors here.
-   Shared verbatim with the design system as its bundle.css. */
+   Shared verbatim with the design system as its bundle.css.
+   Feel: friendly work order. Keys you can press, soft rounded surfaces, rewards that bounce. */
 
 /* ---------- Lockup ---------- */
 .fs-lockup {
@@ -11,7 +12,7 @@
   font-size: 22px; /* the lockup scales with font-size */
 }
 .fs-lockup__mark { width: 1.32em; height: 1.32em; color: var(--hivis); flex: none; }
-.fs-lockup__word { height: 1em; width: auto; aspect-ratio: 511.1 / 71.6; color: currentColor; flex: none; }
+.fs-lockup__word { height: 1.137em; width: auto; aspect-ratio: 511.1 / 81.4; color: currentColor; flex: none; }
 
 /* ---------- Icons ---------- */
 .fs-icon {
@@ -26,36 +27,55 @@
 }
 .fs-icon--sm { width: 14px; height: 14px; stroke-width: 2; }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons: keys you press. The edge below the key sinks on :active ---------- */
 .fs-btn {
+  --edge: transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
   min-height: 44px;
   padding: 0 18px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-m);
-  font: 600 15px/1.1 var(--font-sans);
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 3px 0 0 var(--edge);
+  font: 700 15px/1.1 var(--font-sans);
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    box-shadow var(--dur-press) var(--ease-out),
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
 }
-.fs-btn:hover { transform: translateY(-1px); }
-.fs-btn:active { transform: translateY(0); }
-.fs-btn[disabled], .fs-btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; transform: none; }
+.fs-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 0 0 var(--edge); }
+.fs-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 0 var(--edge); }
+.fs-btn[disabled], .fs-btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: 0 3px 0 0 var(--edge); }
 
-.fs-btn--primary { background: var(--ink); color: var(--paper); }
-.fs-btn--primary:hover { box-shadow: 0 6px 16px -8px var(--ink); }
-.fs-btn--secondary { background: var(--paper); color: var(--ink); border-color: var(--line-strong); }
-.fs-btn--secondary:hover { border-color: var(--ink); }
-.fs-btn--hivis { background: var(--hivis); color: var(--on-hivis); }
-.fs-btn--hivis:hover { box-shadow: 0 6px 18px -8px var(--hivis); }
-.fs-btn--ghost { background: transparent; color: var(--ink-soft); }
-.fs-btn--ghost:hover { background: var(--sunk); color: var(--ink); transform: none; }
-.fs-btn--lg { min-height: 52px; padding: 0 24px; font-size: 16px; }
-.fs-btn--sm { min-height: 36px; padding: 0 12px; font-size: 14px; }
+.fs-btn--primary { background: var(--ink); color: var(--paper); --edge: var(--ink-edge); }
+.fs-btn--secondary { background: var(--paper); color: var(--ink); border-color: var(--line-strong); --edge: var(--line-strong); }
+.fs-btn--secondary:hover { border-color: var(--ink); --edge: var(--ink); }
+.fs-btn--hivis { background: var(--hivis); color: var(--on-hivis); --edge: var(--hivis-text); }
+.fs-btn--ghost { background: transparent; color: var(--ink-soft); box-shadow: none; }
+.fs-btn--ghost:hover { background: var(--sunk); color: var(--ink); transform: none; box-shadow: none; }
+.fs-btn--ghost:active { transform: scale(0.97); box-shadow: none; }
+.fs-btn--lg { min-height: 52px; padding: 0 24px; font-size: 16px; border-radius: 14px; }
+.fs-btn--sm { min-height: 40px; padding: 0 14px; font-size: 14px; border-radius: 10px; }
+@media (pointer: coarse) { .fs-btn--sm { min-height: 44px; } }
+
+/* Busy state: keeps its width, shows a spinner, announces via aria-busy */
+.fs-btn[aria-busy="true"] { cursor: progress; }
+.fs-btn[aria-busy="true"]::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: fs-spin 0.7s linear infinite;
+}
+@keyframes fs-spin { to { transform: rotate(360deg); } }
 
 /* ---------- Focus ---------- */
 .fs-btn:focus-visible,
@@ -78,7 +98,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius-s);
   background: var(--sunk);
@@ -92,11 +112,11 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 26px;
-  padding: 0 10px 0 8px;
+  min-height: 28px;
+  padding: 0 11px 0 9px;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
-  font: 500 13px/1 var(--font-sans);
+  font: 600 13px/1 var(--font-sans);
   white-space: nowrap;
 }
 .fs-chip--observed,
@@ -220,7 +240,7 @@
 .fs-evidence--observed .fs-evidence__state { color: var(--proof); }
 .fs-evidence--partial .fs-evidence__state { color: var(--hivis-text); }
 .fs-evidence--missing .fs-evidence__state { color: var(--ink-muted); }
-.fs-evidence__claim { margin: 0; font: 500 16px/1.45 var(--font-sans); color: var(--ink); }
+.fs-evidence__claim { margin: 0; font: 600 16px/1.45 var(--font-sans); color: var(--ink); }
 .fs-evidence__src { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 0; }
 @media (max-width: 560px) {
   .fs-evidence { grid-template-columns: 24px minmax(0, 1fr); }
@@ -230,31 +250,53 @@
 /* ---------- Defense transcript ---------- */
 .fs-q, .fs-a { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
 .fs-q {
-  padding: var(--space-4) var(--space-6) var(--space-6);
+  padding: var(--space-4) var(--space-6) var(--space-4);
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
+  box-shadow: var(--shadow-soft);
 }
 .fs-q__meta, .fs-a__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
-.fs-q__text { margin: 0; font: 600 19px/1.45 var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.fs-q__ack { margin: 0; font: 500 15px/1.5 var(--font-sans); color: var(--ink-soft); }
+.fs-q__text { margin: 0; font: 700 19px/1.45 var(--font-sans); color: var(--ink); text-wrap: pretty; }
 .fs-a { padding: 0 var(--space-6) 0 calc(var(--space-6) + var(--space-4)); }
 .fs-a__text { margin: 0; font: 400 16px/1.65 var(--font-sans); color: var(--ink-soft); }
-.fs-a__text mark { background: var(--hivis-tint); color: var(--ink); padding: 0 3px; border-radius: 3px; }
+.fs-a__text mark { background: var(--hivis-tint); color: var(--ink); padding: 0 3px; border-radius: 4px; }
+
+/* Interviewer avatar: the mark on an ink disc */
+.fs-avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--hivis);
+  flex: none;
+}
+.fs-avatar svg { width: 16px; height: 16px; }
 
 /* ---------- Form fields ---------- */
 .fs-field { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
-.fs-field__label { font: 600 14px/1.35 var(--font-sans); color: var(--ink); }
-.fs-field__hint { font: 400 13px/1.45 var(--font-sans); color: var(--ink-muted); }
+.fs-field__label { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 700 15px/1.35 var(--font-sans); color: var(--ink); }
+.fs-field__tag { font: 500 12px/1 var(--font-sans); color: var(--ink-muted); }
+.fs-field__hint { font: 400 13.5px/1.5 var(--font-sans); color: var(--ink-muted); }
+.fs-field__error { display: flex; align-items: center; gap: 6px; margin: 0; font: 600 13.5px/1.4 var(--font-sans); color: var(--alert); }
 .fs-input, .fs-textarea {
   width: 100%;
   box-sizing: border-box;
+  min-height: 44px;
   padding: 10px 12px;
   background: var(--paper);
   color: var(--ink);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-s);
+  border: 1.5px solid var(--line-strong);
+  border-radius: 10px;
   font: 400 15px/1.55 var(--font-sans);
+  transition: border-color var(--dur-fast) ease;
 }
+.fs-input:hover, .fs-textarea:hover { border-color: var(--ink-soft); }
+.fs-input:focus, .fs-textarea:focus { border-color: var(--focus); }
+.fs-input[aria-invalid="true"], .fs-textarea[aria-invalid="true"] { border-color: var(--alert); }
 .fs-textarea { resize: vertical; min-height: 96px; }
 .fs-textarea--code { font: 400 13.5px/1.7 var(--font-mono); background: var(--sunk); white-space: pre; overflow-x: auto; }
 .fs-choice {
@@ -262,13 +304,15 @@
   gap: var(--space-3);
   align-items: flex-start;
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--line-strong);
+  border: 1.5px solid var(--line-strong);
   border-radius: var(--radius-m);
   background: var(--paper);
   cursor: pointer;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
-.fs-choice:has(input:checked) { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
-.fs-choice input { margin: 3px 0 0; accent-color: var(--ink); width: 16px; height: 16px; flex: none; }
+.fs-choice:hover { border-color: var(--ink-soft); }
+.fs-choice:has(input:checked) { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); background: var(--sunk); }
+.fs-choice input { margin: 3px 0 0; accent-color: var(--ink); width: 18px; height: 18px; flex: none; cursor: pointer; }
 
 /* ---------- Stepper: the five stations of a shift ---------- */
 .fs-stepper {
@@ -286,29 +330,35 @@
   align-items: center;
   gap: var(--space-2);
   width: 100%;
-  padding: 10px 12px;
+  min-height: 44px;
+  padding: 8px 12px;
   border: 0;
   border-top: 3px solid var(--line);
   background: transparent;
   color: var(--ink-muted);
-  font: 500 14px/1.2 var(--font-sans);
+  font: 600 14px/1.2 var(--font-sans);
   text-align: left;
   cursor: pointer;
   white-space: nowrap;
+  transition: color var(--dur-fast) ease, border-color var(--dur-base) var(--ease-out);
 }
+.fs-stepper__btn:hover { color: var(--ink); }
 .fs-stepper__num {
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 1px solid var(--line-strong);
+  border: 1.5px solid var(--line-strong);
   font: 600 11px/1 var(--font-mono);
   flex: none;
 }
-.fs-stepper__item[data-state="done"] .fs-stepper__btn { color: var(--ink-soft); border-top-color: var(--ink); }
-.fs-stepper__item[data-state="done"] .fs-stepper__num { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.fs-stepper__item[data-state="current"] .fs-stepper__btn { color: var(--ink); font-weight: 600; border-top-color: var(--hivis); }
+.fs-stepper__num svg { display: none; }
+.fs-stepper__item[data-state="done"] .fs-stepper__btn { color: var(--ink-soft); border-top-color: var(--proof); }
+.fs-stepper__item[data-state="done"] .fs-stepper__num { background: var(--proof); color: var(--paper); border-color: var(--proof); }
+.fs-stepper__item[data-state="done"] .fs-stepper__num span { display: none; }
+.fs-stepper__item[data-state="done"] .fs-stepper__num svg { display: block; }
+.fs-stepper__item[data-state="current"] .fs-stepper__btn { color: var(--ink); font-weight: 700; border-top-color: var(--hivis); }
 .fs-stepper__item[data-state="current"] .fs-stepper__num { background: var(--hivis); color: var(--on-hivis); border-color: var(--hivis); }
 .fs-stepper__btn:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 
@@ -317,10 +367,235 @@
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
+  box-shadow: var(--shadow-soft);
   padding: var(--space-6);
 }
 
+/* ================= Progress & rewards =================
+   Gamify the effort, never the judgment: XP and badges reward doing the work,
+   disclosing AI use and saying "I'm not sure". They never appear on an evidence report. */
+
+/* ---------- Keycap: levels and step numbers ---------- */
+.fs-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 7px;
+  border: 1.5px solid var(--line-strong);
+  border-bottom-width: 4px;
+  border-radius: 9px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 600 14px/1 var(--font-mono);
+  flex: none;
+}
+.fs-key--hivis { background: var(--hivis); border-color: var(--hivis-text); color: var(--on-hivis); }
+
+/* ---------- Reward: what a task or action pays ---------- */
+.fs-reward {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: var(--radius-pill);
+  background: var(--hivis-tint);
+  color: var(--hivis-text);
+  font: 600 12px/1 var(--font-mono);
+  white-space: nowrap;
+}
+
+/* ---------- XP bar: hi-vis tape that fills ---------- */
+.fs-xp { display: grid; gap: 6px; }
+.fs-xp__top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font: 500 12px/1.35 var(--font-mono); color: var(--ink-muted); }
+.fs-xp__top strong { color: var(--ink); font-weight: 600; }
+.fs-xp__bar { height: 12px; border-radius: var(--radius-pill); background: var(--line); overflow: hidden; }
+.fs-xp__fill {
+  display: block;
+  height: 100%;
+  width: var(--xp, 0%);
+  border-radius: inherit;
+  background-color: var(--hivis);
+  background-image: repeating-linear-gradient(-45deg, var(--sheen) 0 6px, transparent 6px 12px);
+  transition: width 0.9s var(--ease-out);
+}
+
+/* ---------- Badge: a hex patch with the Shift Stripe band ---------- */
+.fs-badge { display: grid; justify-items: center; align-content: start; gap: 6px; text-align: center; }
+.fs-badge__patch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 56px;
+  background: var(--ink);
+  color: var(--paper);
+  clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0 50%);
+}
+.fs-badge__patch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 13px;
+  height: 7px;
+  background: var(--hivis);
+}
+.fs-badge__patch .fs-icon { position: relative; top: -5px; width: 22px; height: 22px; }
+.fs-badge__name { font: 700 13px/1.25 var(--font-sans); color: var(--ink); }
+.fs-badge__how { font: 400 12px/1.35 var(--font-sans); color: var(--ink-muted); }
+.fs-badge--locked .fs-badge__patch { background: var(--line); color: var(--ink-muted); }
+.fs-badge--locked .fs-badge__patch::after { display: none; }
+.fs-badge--locked .fs-badge__patch .fs-icon { top: 0; }
+.fs-badge--locked .fs-badge__name { color: var(--ink-soft); }
+.fs-badge--new .fs-badge__patch { animation: fs-stamp 0.55s var(--ease-spring) both; }
+.fs-badge--sm .fs-badge__patch { width: 40px; height: 37px; }
+.fs-badge--sm .fs-badge__patch::after { bottom: 8px; height: 5px; }
+.fs-badge--sm .fs-badge__patch .fs-icon { width: 16px; height: 16px; top: -3px; }
+@keyframes fs-stamp { from { transform: scale(1.5) rotate(-12deg); opacity: 0.4; } }
+
+/* ---------- Skill stripes: one per task where the report shows the skill ---------- */
+.fs-skill {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px var(--space-3);
+  align-items: center;
+  padding-block: 10px;
+  border-top: 1px solid var(--line);
+}
+.fs-skill:first-child { border-top: 0; }
+.fs-skill__name { font: 600 15px/1.35 var(--font-sans); color: var(--ink); }
+.fs-skill__note { grid-column: 1 / -1; font: 400 13px/1.4 var(--font-sans); color: var(--ink-muted); }
+.fs-skill__note--quest { color: var(--hivis-text); font-weight: 600; }
+.fs-stripes { display: inline-flex; gap: 4px; padding-right: 3px; }
+.fs-stripes i { width: 16px; height: 10px; border-radius: 3px; background: var(--line); transform: skewX(-24deg); }
+.fs-stripes i.on { background: var(--hivis); }
+
+/* ---------- Quest path: the track of shifts, joined by perforation ---------- */
+.fs-path { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+.fs-path__step { position: relative; display: grid; justify-items: center; gap: 6px; text-align: center; padding-inline: 4px; }
+.fs-path__step + .fs-path__step::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  right: 50%;
+  width: 100%;
+  border-top: 2px dashed var(--line-strong);
+  z-index: 0;
+}
+.fs-path__step[data-state="done"] + .fs-path__step::before { border-top-style: solid; border-color: var(--proof); }
+.fs-path__node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  border-bottom-width: 4px;
+  background: var(--paper);
+  color: var(--ink-muted);
+}
+.fs-path__step[data-state="done"] .fs-path__node { background: var(--proof); border-color: var(--ink); color: var(--paper); }
+.fs-path__step[data-state="current"] .fs-path__node { background: var(--hivis); border-color: var(--hivis-text); color: var(--on-hivis); box-shadow: 0 0 0 5px var(--hivis-tint); }
+.fs-path__step[data-state="locked"] .fs-path__node { background: var(--sunk); }
+.fs-path__id { font: 600 12px/1 var(--font-mono); color: var(--ink); }
+.fs-path__name { font: 500 12.5px/1.3 var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+.fs-path__step[data-state="current"] .fs-path__id { color: var(--hivis-text); }
+
+/* ---------- Stamp: "Shift complete" lands like a rubber stamp ---------- */
+.fs-stamp {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 3px solid var(--hivis-text);
+  border-radius: 8px;
+  outline: 1.5px solid var(--hivis-text);
+  outline-offset: 3px;
+  color: var(--hivis-text);
+  font: 800 15px/1 var(--font-display);
+  font-stretch: var(--display-stretch, 112%);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+  white-space: nowrap;
+}
+.fs-stamp--in { animation: fs-stamp-in 0.6s var(--ease-spring) both; }
+@keyframes fs-stamp-in { from { transform: scale(1.8) rotate(-18deg); opacity: 0; } }
+
+/* ---------- Toasts ---------- */
+.fs-toasts {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: grid;
+  gap: var(--space-2);
+  width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.fs-toast {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-m);
+  box-shadow: 0 3px 0 0 var(--ink), var(--shadow-ticket);
+  animation: fs-toast-in var(--dur-slow) var(--ease-spring) both;
+}
+.fs-toast.is-leaving { animation: fs-toast-out 0.24s var(--ease-in) forwards; }
+.fs-toast__title { margin: 0; font: 700 14px/1.3 var(--font-sans); color: var(--ink); }
+.fs-toast__sub { margin: 2px 0 0; font: 400 13px/1.35 var(--font-sans); color: var(--ink-muted); }
+.fs-toast__xp { font: 700 14px/1 var(--font-mono); color: var(--hivis-text); }
+.fs-toast--level { border-color: var(--hivis-text); box-shadow: 0 3px 0 0 var(--hivis-text), 0 0 0 4px var(--hivis-tint), var(--shadow-ticket); }
+@keyframes fs-toast-in { from { opacity: 0; transform: translateY(14px) scale(0.96); } }
+@keyframes fs-toast-out { to { opacity: 0; transform: translateX(24px); } }
+
+/* ---------- Hint: free, progressive disclosure ---------- */
+.fs-hint { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--paper); }
+.fs-hint > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 10px 14px;
+  list-style: none;
+  cursor: pointer;
+  font: 700 14px/1.35 var(--font-sans);
+  color: var(--ink);
+}
+.fs-hint > summary::-webkit-details-marker { display: none; }
+.fs-hint > summary::after { content: "+"; margin-left: auto; font: 500 16px/1 var(--font-mono); color: var(--ink-muted); transition: transform var(--dur-fast) var(--ease-out); }
+.fs-hint[open] > summary::after { content: "−"; }
+.fs-hint > summary .fs-icon { color: var(--hivis-text); }
+.fs-hint > summary:hover { color: var(--ink); background: var(--sunk); border-radius: var(--radius-m); }
+.fs-hint > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-m); }
+.fs-hint__body { margin: 0; padding: 0 14px 12px 42px; font: 400 14px/1.6 var(--font-sans); color: var(--ink-soft); }
+.fs-hint[open] .fs-hint__body { animation: fs-reveal var(--dur-base) var(--ease-out); }
+@keyframes fs-reveal { from { opacity: 0.4; transform: translateY(-4px); } }
+
+/* ---------- Tip: a helpful nudge ---------- */
+.fs-tip {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: var(--radius-m);
+  background: var(--review-tint);
+  color: var(--ink);
+  font: 400 14px/1.55 var(--font-sans);
+}
+.fs-tip > .fs-icon { color: var(--review); margin-top: 1px; }
+.fs-tip strong { font-weight: 700; }
+
 @media (prefers-reduced-motion: reduce) {
-  .fs-btn, .fs-btn:hover { transition: none; transform: none; }
+  .fs-btn, .fs-btn:hover, .fs-btn:active { transition: none; transform: none; }
+  .fs-btn[aria-busy="true"]::before { animation: none; }
   .fs-chip--live::before { animation: none; }
+  .fs-xp__fill { transition: none; }
+  .fs-toast, .fs-toast.is-leaving, .fs-badge--new .fs-badge__patch, .fs-stamp--in, .fs-hint[open] .fs-hint__body { animation: none; }
 }

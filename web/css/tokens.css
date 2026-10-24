@@ -1,14 +1,14 @@
 /* FirstShift tokens — the one source for color, type, spacing and radius.
    Look: "work order". Tickets on a cool desk, ink type, one hi-vis orange.
-   Light values on :root; dark values follow the OS unless data-theme says otherwise. */
+   Light only, by choice: the product always renders on the light desk. */
 
 :root {
+  color-scheme: light;
+
   /* Grounds */
   --desk: #F2F4F7;        /* page background */
   --paper: #FFFFFF;       /* tickets, cards, panels */
   --sunk: #F6F7F9;        /* code blocks, inputs, inset wells */
-  --night: #0D1526;       /* the one dark band on the landing page */
-  --on-night: #F2F4F7;    /* text on night */
 
   /* Ink */
   --ink: #0D1526;         /* headings, body, primary button fill */
@@ -18,23 +18,27 @@
   --line-strong: #7D8699; /* input and control borders (3:1) */
 
   /* Brand signal: hi-vis orange marks the next move */
-  --hivis: #F2511B;       /* the mark, live indicators, gap markers */
+  --hivis: #F2511B;       /* the mark, live indicators, XP, earned patches */
   --on-hivis: #0D1526;    /* text on a hivis fill */
   --hivis-text: #B23A0C;  /* orange used as text */
-  --hivis-tint: #FFEDE4;  /* gap and "partial" backgrounds */
+  --hivis-tint: #FFEDE4;  /* gap, partial and reward backgrounds */
+  --sheen: rgba(255, 255, 255, 0.28); /* hi-vis tape stripes over a hivis fill */
 
   /* Evidence and status */
   --proof: #0A6B5C;       /* observed evidence, confirmed payment */
   --proof-tint: #DFF3EE;
-  --review: #2346C8;      /* human review, pending states, links */
+  --review: #2346C8;      /* human review, pending states, tips, links */
   --review-tint: #E7ECFF;
   --alert: #B42318;       /* failed payment, destructive */
   --alert-tint: #FDE8E6;
   --focus: #2346C8;       /* focus ring, 3:1 on every ground */
+  --scrim: rgba(13, 21, 38, 0.36); /* behind dialogs */
+
+  --ink-edge: #000611;    /* the pressed-key edge under ink buttons */
 
   /* Type */
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --font-sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --display-stretch: 112%; /* Archivo SemiExpanded: the brand's display width */
 
@@ -48,34 +52,22 @@
   --space-12: 48px;
   --space-18: 72px;
 
-  /* Radius */
-  --radius-s: 6px;        /* chips, inputs, refs */
-  --radius-m: 10px;       /* buttons, cards */
-  --radius-l: 16px;       /* tickets, panels */
+  /* Radius: soft and friendly (clay range 16–24 for surfaces) */
+  --radius-s: 8px;        /* refs, inputs, small chips */
+  --radius-m: 14px;       /* buttons, cards, code blocks */
+  --radius-l: 20px;       /* tickets, panels, dialogs */
   --radius-pill: 999px;   /* status chips */
 
-  /* Elevation: only tickets float */
+  /* Elevation: tickets, toasts and dialogs float; panels sit soft */
   --shadow-ticket: 0 1px 0 rgba(13, 21, 38, 0.04), 0 12px 32px -16px rgba(13, 21, 38, 0.28);
-}
+  --shadow-soft: 0 1px 2px rgba(13, 21, 38, 0.04), 0 8px 22px -14px rgba(13, 21, 38, 0.18);
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --desk: #0A0F1A; --paper: #121A2B; --sunk: #0E1524; --night: #182339; --on-night: #EDF1F7;
-    --ink: #EDF1F7; --ink-soft: #B4BCCC; --ink-muted: #949EB2; --line: #222C42; --line-strong: #5E6A87;
-    --hivis: #FF6B35; --on-hivis: #0D1526; --hivis-text: #FF946B; --hivis-tint: #3A1D12;
-    --proof: #4FD1AE; --proof-tint: #0E2F29; --review: #9DB1FF; --review-tint: #1A2452;
-    --alert: #FF8C80; --alert-tint: #3B1513; --focus: #9DB1FF;
-    --shadow-ticket: 0 1px 0 rgba(0, 0, 0, 0.3), 0 16px 40px -18px rgba(0, 0, 0, 0.7);
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --desk: #0A0F1A; --paper: #121A2B; --sunk: #0E1524; --night: #182339; --on-night: #EDF1F7;
-  --ink: #EDF1F7; --ink-soft: #B4BCCC; --ink-muted: #949EB2; --line: #222C42; --line-strong: #5E6A87;
-  --hivis: #FF6B35; --on-hivis: #0D1526; --hivis-text: #FF946B; --hivis-tint: #3A1D12;
-  --proof: #4FD1AE; --proof-tint: #0E2F29; --review: #9DB1FF; --review-tint: #1A2452;
-  --alert: #FF8C80; --alert-tint: #3B1513; --focus: #9DB1FF;
-  --shadow-ticket: 0 1px 0 rgba(0, 0, 0, 0.3), 0 16px 40px -18px rgba(0, 0, 0, 0.7);
-  color-scheme: dark;
+  /* Motion: one rhythm everywhere. Exits run ~65% of enters. */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);       /* arriving */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);            /* leaving */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* rewards: badges, stamps, toasts */
+  --dur-press: 90ms;
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-slow: 420ms;
 }
