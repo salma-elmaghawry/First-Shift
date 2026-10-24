@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FirstShift</title>
+<meta name="description" content="Practice the work. Defend your decisions. Know what to improve.">
+<link rel="icon" href="assets/firstshift-app-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/type.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<!-- FirstShift logo sprite (generated from Archivo SemiExpanded ExtraBold outlines) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="fs-mark" viewBox="0 0 48 48"><path d="M24 3 L45 24 L34 24 L34 28 L14 28 L14 24 L3 24 Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 34 L34 34 L34 45 L14 45 Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol><symbol id="fs-wordmark" viewBox="0 0 511.1 71.6"><path d="M9.5 70.10000000000001V1.4000000000000057H69.7V15.900000000000006H28.6V30.300000000000004H65.0V44.7H28.6V70.10000000000001ZM78.7 10.200000000000003V-2.299999999999997H96.1V10.200000000000003ZM78.7 70.10000000000001V17.400000000000006H96.1V70.10000000000001ZM107.70000000000002 70.10000000000001V17.400000000000006H121.9L123.10000000000001 25.900000000000006H123.9Q125.20000000000002 22.900000000000006 127.30000000000001 20.700000000000006Q129.4 18.500000000000007 132.25 17.300000000000008Q135.10000000000002 16.10000000000001 138.4 16.10000000000001Q140.3 16.10000000000001 141.95000000000002 16.400000000000006Q143.60000000000002 16.700000000000003 144.8 17.200000000000003V31.700000000000003H137.8Q134.5 31.700000000000003 132.10000000000002 32.650000000000006Q129.70000000000002 33.60000000000001 128.15 35.45Q126.60000000000001 37.300000000000004 125.85000000000001 39.80000000000001Q125.10000000000001 42.30000000000001 125.10000000000001 45.30000000000001V70.10000000000001ZM176.5 71.30000000000001Q170.9 71.30000000000001 165.8 70.30000000000001Q160.70000000000002 69.30000000000001 156.70000000000002 67.25Q152.70000000000002 65.2 150.4 62.10000000000001Q148.1 59.00000000000001 148.1 54.80000000000001Q148.1 54.400000000000006 148.1 54.050000000000004Q148.1 53.7 148.20000000000002 53.30000000000001H165.4Q165.4 53.60000000000001 165.4 53.85000000000001Q165.4 54.10000000000001 165.4 54.30000000000001Q165.4 56.400000000000006 167.0 57.75000000000001Q168.60000000000002 59.10000000000001 171.15000000000003 59.75000000000001Q173.70000000000002 60.400000000000006 176.60000000000002 60.400000000000006Q179.0 60.400000000000006 181.65 60.05000000000001Q184.3 59.70000000000001 186.15 58.70000000000001Q188.0 57.70000000000001 188.0 55.60000000000001Q188.0 53.400000000000006 185.65 52.400000000000006Q183.3 51.400000000000006 179.4 50.800000000000004Q175.5 50.2 170.70000000000002 49.400000000000006Q166.70000000000002 48.7 162.95000000000002 47.650000000000006Q159.20000000000002 46.60000000000001 156.15 44.85000000000001Q153.1 43.10000000000001 151.3 40.25000000000001Q149.5 37.400000000000006 149.5 33.20000000000001Q149.5 28.500000000000007 151.65 25.250000000000007Q153.8 22.000000000000007 157.60000000000002 20.000000000000007Q161.4 18.000000000000007 166.45 17.100000000000005Q171.5 16.200000000000003 177.20000000000002 16.200000000000003Q182.4 16.200000000000003 187.10000000000002 17.100000000000005Q191.8 18.000000000000007 195.55 19.800000000000008Q199.3 21.60000000000001 201.45000000000002 24.450000000000006Q203.60000000000002 27.300000000000004 203.60000000000002 31.200000000000003Q203.60000000000002 31.60000000000001 203.60000000000002 32.10000000000001Q203.60000000000002 32.60000000000001 203.5 32.800000000000004H186.4V32.10000000000001Q186.4 30.400000000000006 185.05 29.300000000000004Q183.70000000000002 28.200000000000003 181.60000000000002 27.650000000000006Q179.5 27.10000000000001 176.9 27.10000000000001Q175.70000000000002 27.10000000000001 173.95000000000002 27.250000000000007Q172.20000000000002 27.400000000000006 170.55 27.800000000000004Q168.9 28.200000000000003 167.8 29.000000000000004Q166.70000000000002 29.800000000000004 166.70000000000002 31.200000000000003Q166.70000000000002 32.900000000000006 168.60000000000002 33.80000000000001Q170.5 34.70000000000001 173.60000000000002 35.20000000000001Q176.70000000000002 35.70000000000001 180.4 36.300000000000004Q184.70000000000002 37.00000000000001 189.05 37.85000000000001Q193.4 38.7 197.05 40.400000000000006Q200.70000000000002 42.10000000000001 202.95000000000002 45.150000000000006Q205.20000000000002 48.2 205.20000000000002 53.30000000000001Q205.20000000000002 58.400000000000006 203.0 61.900000000000006Q200.8 65.4 196.9 67.45000000000002Q193.0 69.50000000000001 187.75 70.4Q182.5 71.30000000000001 176.5 71.30000000000001ZM236.50000000000003 71.30000000000001Q230.60000000000002 71.30000000000001 226.60000000000002 69.75Q222.60000000000002 68.2 220.60000000000002 64.85000000000001Q218.60000000000002 61.50000000000001 218.60000000000002 56.00000000000001V29.60000000000001H210.00000000000003V17.400000000000006H219.20000000000002L222.70000000000002 1.8000000000000114H236.00000000000003V17.400000000000006H248.50000000000003V29.60000000000001H236.00000000000003V52.30000000000001Q236.00000000000003 55.60000000000001 237.35000000000002 57.35000000000001Q238.70000000000002 59.10000000000001 242.60000000000002 59.10000000000001H248.50000000000003V69.50000000000001Q247.20000000000002 70.00000000000001 245.0 70.4Q242.8 70.80000000000001 240.5 71.05000000000001Q238.20000000000002 71.30000000000001 236.50000000000003 71.30000000000001ZM291.40000000000003 71.30000000000001Q283.90000000000003 71.30000000000001 277.40000000000003 70.25Q270.90000000000003 69.2 266.0 66.65Q261.1 64.10000000000001 258.3 59.70000000000001Q255.5 55.30000000000001 255.5 48.7Q255.5 48.400000000000006 255.5 48.050000000000004Q255.5 47.7 255.60000000000002 47.30000000000001H274.3Q274.2 47.7 274.15 48.150000000000006Q274.1 48.60000000000001 274.1 49.00000000000001Q274.1 52.10000000000001 276.1 53.95000000000001Q278.1 55.80000000000001 281.70000000000005 56.55000000000001Q285.3 57.30000000000001 290.1 57.30000000000001Q292.40000000000003 57.30000000000001 294.6 57.150000000000006Q296.8 57.00000000000001 298.70000000000005 56.60000000000001Q300.6 56.20000000000001 302.05 55.45000000000001Q303.5 54.70000000000001 304.35 53.650000000000006Q305.20000000000005 52.60000000000001 305.20000000000005 51.10000000000001Q305.20000000000005 48.900000000000006 303.15000000000003 47.550000000000004Q301.1 46.2 297.70000000000005 45.300000000000004Q294.3 44.400000000000006 290.0 43.650000000000006Q285.7 42.900000000000006 281.1 42.00000000000001Q276.5 41.10000000000001 272.20000000000005 39.60000000000001Q267.90000000000003 38.10000000000001 264.45000000000005 35.75000000000001Q261.0 33.400000000000006 259.0 29.800000000000004Q257.0 26.200000000000003 257.0 21.000000000000007Q257.0 15.600000000000009 259.5 11.650000000000006Q262.0 7.700000000000003 266.55 5.150000000000006Q271.1 2.6000000000000085 277.15 1.4000000000000057Q283.2 0.20000000000000284 290.20000000000005 0.20000000000000284Q297.20000000000005 0.20000000000000284 303.15000000000003 1.4000000000000057Q309.1 2.6000000000000085 313.45000000000005 5.150000000000006Q317.8 7.700000000000003 320.20000000000005 11.600000000000005Q322.6 15.500000000000007 322.70000000000005 20.800000000000004V22.000000000000007H304.20000000000005V21.300000000000004Q304.20000000000005 19.10000000000001 302.65000000000003 17.400000000000006Q301.1 15.700000000000003 298.15000000000003 14.700000000000003Q295.20000000000005 13.700000000000003 290.90000000000003 13.700000000000003Q286.1 13.700000000000003 282.9 14.400000000000006Q279.7 15.100000000000009 278.15 16.400000000000006Q276.6 17.700000000000003 276.6 19.400000000000006Q276.6 21.500000000000007 278.6 22.800000000000008Q280.6 24.10000000000001 284.05 24.950000000000006Q287.5 25.800000000000004 291.8 26.500000000000004Q296.1 27.200000000000003 300.70000000000005 28.100000000000005Q305.3 29.000000000000007 309.6 30.400000000000006Q313.90000000000003 31.800000000000004 317.35 34.10000000000001Q320.8 36.400000000000006 322.8 39.900000000000006Q324.8 43.400000000000006 324.8 48.400000000000006Q324.8 56.60000000000001 320.45000000000005 61.650000000000006Q316.1 66.7 308.55 69.0Q301.0 71.30000000000001 291.40000000000003 71.30000000000001ZM334.2 70.10000000000001V-2.299999999999997H351.6V23.60000000000001H352.3Q354.5 21.000000000000007 357.4 19.400000000000006Q360.3 17.800000000000004 363.65 17.000000000000004Q367.0 16.200000000000003 370.40000000000003 16.200000000000003Q377.1 16.200000000000003 381.65000000000003 18.450000000000003Q386.20000000000005 20.700000000000003 388.55000000000007 25.250000000000004Q390.90000000000003 29.800000000000004 390.90000000000003 36.800000000000004V70.10000000000001H373.40000000000003V39.2Q373.40000000000003 36.800000000000004 372.75 34.95Q372.1 33.10000000000001 370.90000000000003 31.900000000000006Q369.70000000000005 30.700000000000003 367.85 30.100000000000005Q366.0 29.500000000000007 363.7 29.500000000000007Q360.3 29.500000000000007 357.55 31.000000000000007Q354.8 32.50000000000001 353.20000000000005 35.05000000000001Q351.6 37.60000000000001 351.6 40.900000000000006V70.10000000000001ZM402.2 10.200000000000003V-2.299999999999997H419.6V10.200000000000003ZM402.2 70.10000000000001V17.400000000000006H419.6V70.10000000000001ZM435.2 70.10000000000001V29.60000000000001H425.90000000000003V17.400000000000006H435.2V13.800000000000004Q435.2 8.000000000000007 437.35 4.150000000000009Q439.5 0.30000000000001137 443.65 -1.54999999999999Q447.8 -3.3999999999999915 453.6 -3.3999999999999915Q455.40000000000003 -3.3999999999999915 457.6 -3.1999999999999957Q459.8 -3.0 461.9 -2.5999999999999943Q464.0 -2.1999999999999886 465.5 -1.6999999999999886V8.800000000000004H459.8Q455.8 8.800000000000004 454.20000000000005 10.000000000000004Q452.6 11.200000000000003 452.6 14.000000000000007V17.400000000000006H465.5V29.60000000000001H452.6V70.10000000000001ZM494.1 71.30000000000001Q488.2 71.30000000000001 484.2 69.75Q480.2 68.2 478.2 64.85000000000001Q476.2 61.50000000000001 476.2 56.00000000000001V29.60000000000001H467.6V17.400000000000006H476.8L480.3 1.8000000000000114H493.6V17.400000000000006H506.1V29.60000000000001H493.6V52.30000000000001Q493.6 55.60000000000001 494.95000000000005 57.35000000000001Q496.3 59.10000000000001 500.2 59.10000000000001H506.1V69.50000000000001Q504.8 70.00000000000001 502.6 70.4Q500.40000000000003 70.80000000000001 498.1 71.05000000000001Q495.8 71.30000000000001 494.1 71.30000000000001Z" fill="currentColor"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-observed" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></symbol>
+  <symbol id="i-partial" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></symbol>
+  <symbol id="i-missing" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/></symbol>
+  <symbol id="i-pending" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-failed" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
+  <symbol id="i-unknown" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.6.3-1 .8-1 1.5v.6M12 16.8v.2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-prompt" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9.5l3 2.5-3 2.5M13 15h4"/></symbol>
+</svg>
+
+<!-- ============================== LANDING ============================== -->
+<div id="site">
+  <header class="site-bar">
+    <div class="wrap site-bar__inner">
+      <a class="fs-lockup" href="#top" aria-label="FirstShift home">
+        <svg class="fs-lockup__mark" aria-hidden="true"><use href="#fs-mark"/></svg>
+        <svg class="fs-lockup__word" aria-hidden="true"><use href="#fs-wordmark"/></svg>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#evidence">The report</a>
+        <a href="#providers">For training providers</a>
+        <a href="#trust">Trust</a>
+      </nav>
+      <button class="fs-btn fs-btn--primary fs-btn--sm" type="button" data-open-demo="task">Run the demo</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero: the thesis and the ticket -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="fs-label">For frontend graduates and the programs that train them</p>
+          <h1 class="type-display-xl">A project can be copied. <span class="hero__accent">Understanding</span> has to be defended.</h1>
+          <p class="type-body-lg hero__sub">FirstShift gives graduates a real work task, questions them on the decisions behind it, and turns what they show into an evidence report and a focused review with a working engineer.</p>
+          <div class="hero__actions">
+            <button class="fs-btn fs-btn--hivis fs-btn--lg" type="button" data-open-demo="task">Start the demo task <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <a class="fs-btn fs-btn--secondary fs-btn--lg" href="#providers">For training providers</a>
+          </div>
+          <ul class="hero__facts" aria-label="At a glance">
+            <li><span class="fs-label">Task</span> 45 min</li>
+            <li><span class="fs-label">Defense</span> 3 follow-ups</li>
+            <li><span class="fs-label">Score</span> none, only evidence</li>
+          </ul>
+        </div>
+
+        <article class="fs-ticket hero__ticket" aria-label="Example task ticket">
+          <div class="fs-ticket__head">
+            <span class="fs-ticket__id">FS-101</span>
+            <span class="fs-ticket__meta">Frontend · Payments</span>
+            <span class="fs-ticket__meta fs-ticket__time">Est. 45 min</span>
+          </div>
+          <div class="fs-ticket__body">
+            <h2 class="fs-ticket__title">Checkout says “Payment successful” before the server knows.</h2>
+            <p class="type-body-sm muted">After the Paymob redirect, the app shows a success screen and clears the cart. Fix the flow, and handle pending, success, failure and uncertain states.</p>
+            <p class="ref-row"><span class="fs-ref">CheckoutReturn.tsx</span><span class="fs-ref">?success=true</span><span class="fs-ref">test plan</span></p>
+          </div>
+          <div class="fs-ticket__perf" aria-hidden="true"></div>
+          <div class="fs-ticket__stub">
+            <div class="row-between">
+              <span class="fs-label">Work defense · follow-up 2</span>
+              <span class="fs-chip fs-chip--live">Live</span>
+            </div>
+            <p class="hero__question">“If the request timed out and you don’t know whether Paymob processed it, why shouldn’t you create another payment?”</p>
+            <p class="ref-row"><span class="fs-ref">From your answer · “webhook”</span></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- The moment it breaks -->
+    <section class="section">
+      <div class="wrap moment">
+        <div class="moment__head">
+          <p class="fs-label">Where it breaks</p>
+          <h2 class="type-display-l">Graduates have projects. Few can explain the decisions behind them.</h2>
+        </div>
+        <ol class="shift-log" aria-label="A graduate's timeline">
+          <li><span class="shift-log__time">Week 12</span><span class="shift-log__text">Course completed. Certificate issued.</span></li>
+          <li><span class="shift-log__time">Week 13</span><span class="shift-log__text">Portfolio project deployed. README written.</span></li>
+          <li class="shift-log__hit"><span class="shift-log__time">Interview · 10:40</span><span class="shift-log__text">“Why did you build it this way?”</span></li>
+        </ol>
+      </div>
+      <div class="wrap">
+        <ul class="problems">
+          <li><h3 class="type-heading">Projects don’t prove understanding.</h3><p class="type-body-sm muted">Templates, tutorials and AI make finished work easy to produce. The reasoning is what’s missing.</p></li>
+          <li><h3 class="type-heading">Deep review doesn’t scale.</h3><p class="type-body-sm muted">Instructors can’t sit with every learner, on every project, every cohort.</p></li>
+          <li><h3 class="type-heading">Decisions never get practiced.</h3><p class="type-body-sm muted">Courses teach how to build. Very few make learners argue for a trade-off out loud.</p></li>
+          <li><h3 class="type-heading">Coaching time gets spread thin.</h3><p class="type-body-sm muted">Without evidence, a mentor spends half the session finding the problem.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section--paper" id="how">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="fs-label">How it works</p>
+          <h2 class="type-display-l">Do the work. Defend the work. Review the evidence.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">1</span>
+            <h3 class="type-title">Do the work</h3>
+            <p class="type-body muted">A small, realistic task from a real product situation. The graduate submits a code change, a short explanation, a test plan and a note on how they used AI.</p>
+            <div class="step__demo">
+              <div class="fs-code" aria-label="Example diff">
+                <div class="fs-code__line fs-code__line--del"><span>12</span><span>-</span><span>if (params.get("success")) showSuccess();</span></div>
+                <div class="fs-code__line fs-code__line--add"><span>12</span><span>+</span><span>const { status } = useOrderStatus(id);</span></div>
+              </div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">2</span>
+            <h3 class="type-title">Defend the work</h3>
+            <p class="type-body muted">An interviewer asks about the submission, then follows up on what the graduate actually said. Every question points to a line of code or an earlier answer.</p>
+            <div class="step__demo">
+              <p class="step__q">“Why is the redirect not proof of payment?”</p>
+              <p class="ref-row"><span class="fs-ref">diff L12</span><span class="fs-chip fs-chip--live">Follow-up</span></p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">3</span>
+            <h3 class="type-title">Review the evidence</h3>
+            <p class="type-body muted">An evidence report shows what the graduate demonstrated, what’s missing and what to practice next. A working engineer reviews it with them for 30 minutes.</p>
+            <div class="step__demo step__demo--chips">
+              <span class="fs-chip fs-chip--observed"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-observed"/></svg>Observed</span>
+              <span class="fs-chip fs-chip--partial"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-partial"/></svg>Partial</span>
+              <span class="fs-chip fs-chip--missing"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-missing"/></svg>Not shown</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Evidence report excerpt -->
+    <section class="section" id="evidence">
+      <div class="wrap evidence-split">
+        <div class="evidence-split__copy">
+          <p class="fs-label">The report</p>
+          <h2 class="type-display-l">No score out of 100. Evidence you can check.</h2>
+          <p class="type-body-lg muted">Every finding links back to the submission or a timestamp in the defense. A reviewer can verify it in seconds, and so can the training provider.</p>
+          <button class="fs-btn fs-btn--secondary" type="button" data-open-demo="report">Open the full sample report <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="fs-panel report-excerpt">
+          <div class="row-between">
+            <span class="fs-label">FS-101 · Evidence observed</span>
+            <span class="fs-chip fs-chip--pending"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-pending"/></svg>Pending mentor review</span>
+          </div>
+          <ul class="fs-evidence-list">
+            <li class="fs-evidence fs-evidence--observed">
+              <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg></span>
+              <div><p class="fs-evidence__claim">Identified redirect-only success as unsafe.</p><p class="fs-evidence__src"><span class="fs-ref">Explanation ¶1</span><span class="fs-ref">Defense Q1 · 00:12</span></p></div>
+              <span class="fs-chip fs-chip--observed">Observed</span>
+            </li>
+            <li class="fs-evidence fs-evidence--partial">
+              <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-partial"/></svg></span>
+              <div><p class="fs-evidence__claim">Handled timeouts with a “still checking” state, but proposed no way to reconcile.</p><p class="fs-evidence__src"><span class="fs-ref">Defense Q2 · 01:48</span></p></div>
+              <span class="fs-chip fs-chip--partial">Partial</span>
+            </li>
+            <li class="fs-evidence fs-evidence--missing">
+              <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-missing"/></svg></span>
+              <div><p class="fs-evidence__claim">Did not address duplicate webhook delivery.</p><p class="fs-evidence__src"><span class="fs-ref">Defense Q3 · 03:05</span></p></div>
+              <span class="fs-chip fs-chip--missing">Not shown</span>
+            </li>
+          </ul>
+          <dl class="report-trio report-trio--compact">
+            <div><dt class="fs-label">Strength</dt><dd>State reasoning</dd></div>
+            <div><dt class="fs-label">Gap</dt><dd class="gap">Idempotency</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why not ChatGPT -->
+    <section class="night">
+      <div class="wrap night__grid">
+        <div>
+          <p class="fs-label night__label">Why not ChatGPT?</p>
+          <h2 class="type-display-l">ChatGPT is a tool. <span class="night__accent">FirstShift is a program.</span></h2>
+          <p class="type-body-lg night__sub">ChatGPT reviews code or asks questions when someone thinks to ask. FirstShift runs the same readiness process for every learner in a cohort, and keeps the record.</p>
+        </div>
+        <ul class="night__list">
+          <li><strong>Standardized task.</strong> Every learner works the same brief, so results compare.</li>
+          <li><strong>Persistent evidence.</strong> Submission, transcript and findings stay together.</li>
+          <li><strong>Work-specific defense.</strong> Questions come from the learner’s own code and answers.</li>
+          <li><strong>Bounded human review.</strong> 30 minutes, aimed at one exact gap.</li>
+          <li><strong>Cohort operation.</strong> Providers see who needs what next.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Training providers -->
+    <section class="section" id="providers">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="fs-label">For training providers</p>
+          <h2 class="type-display-l">You graduate cohorts. FirstShift shows who needs what next.</h2>
+        </div>
+        <div class="providers">
+          <article class="fs-ticket pilot">
+            <div class="fs-ticket__head">
+              <span class="fs-ticket__id">PILOT</span>
+              <span class="fs-ticket__meta">Cohort readiness program</span>
+              <span class="fs-chip fs-chip--partial fs-ticket__time">Pilot price</span>
+            </div>
+            <div class="fs-ticket__body">
+              <p class="pilot__price"><span class="pilot__amount">5,000</span> <span class="pilot__unit">EGP</span></p>
+              <p class="type-body muted">For a cohort of up to 20 learners. Each learner gets:</p>
+              <ul class="checklist">
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-observed"/></svg>One practical task</li>
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-observed"/></svg>A work defense on their own submission</li>
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-observed"/></svg>An evidence report</li>
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-observed"/></svg>One 30-minute human review</li>
+              </ul>
+            </div>
+            <div class="fs-ticket__perf" aria-hidden="true"></div>
+            <div class="fs-ticket__stub">
+              <p class="type-body-sm muted">Graduates can also book an extra review on their own: 300 EGP for 30 minutes, paid with Paymob.</p>
+              <button class="fs-btn fs-btn--primary" type="button" data-open-demo="task">Walk through the learner flow</button>
+            </div>
+          </article>
+
+          <div class="fs-panel cohort">
+            <div class="row-between">
+              <div>
+                <p class="fs-label">Cohort view · coming next</p>
+                <h3 class="type-heading">Frontend cohort, FS-101</h3>
+              </div>
+              <span class="fs-ref">Example data</span>
+            </div>
+            <div class="table-scroll">
+              <table class="cohort__table">
+                <thead><tr><th scope="col">Learner</th><th scope="col">Status</th><th scope="col">Strength</th><th scope="col">Gap</th></tr></thead>
+                <tbody>
+                  <tr><td>Mariam A.</td><td><span class="fs-chip fs-chip--pending">Review booked</span></td><td>State reasoning</td><td class="gap">Idempotency</td></tr>
+                  <tr><td>Omar S.</td><td><span class="fs-chip fs-chip--observed">Defended</span></td><td>Test plan</td><td class="gap">Server verification</td></tr>
+                  <tr><td>Karim T.</td><td><span class="fs-chip fs-chip--observed">Defended</span></td><td>Payment states</td><td class="gap">Idempotency</td></tr>
+                  <tr><td>Hana M.</td><td><span class="fs-chip fs-chip--partial">Submitted</span></td><td>—</td><td>—</td></tr>
+                  <tr><td>Laila F.</td><td><span class="fs-chip fs-chip--missing">Not started</span></td><td>—</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="type-body-sm muted">The same gap across several learners becomes one workshop instead of several separate review sessions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="section section--paper" id="trust">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="fs-label">Trust</p>
+          <h2 class="type-display-l">What the report is, and what it isn’t.</h2>
+        </div>
+        <div class="trust">
+          <div>
+            <h3 class="trust__title"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg>It is</h3>
+            <ul class="trust__list">
+              <li>A record of how one learner handled one task.</li>
+              <li>Findings linked to the submission and the defense transcript.</li>
+              <li>Checked by a human reviewer before it’s final.</li>
+              <li>Shown with the learner’s own note on how they used AI.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="trust__title trust__title--not"><svg class="fs-icon" aria-hidden="true"><use href="#i-failed"/></svg>It isn’t</h3>
+            <ul class="trust__list">
+              <li>A hiring certification.</li>
+              <li>Proof that the work was done without help.</li>
+              <li>A percentage or a pass mark.</li>
+              <li>A judgment of the person.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <div class="wrap closing__inner">
+        <h2 class="type-display-l">Practice the work. Defend your decisions. Know what to improve.</h2>
+        <button class="fs-btn fs-btn--hivis fs-btn--lg" type="button" data-open-demo="task">Start the demo task <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap site-foot__inner">
+      <a class="fs-lockup fs-lockup--sm" href="#top" aria-label="FirstShift home">
+        <svg class="fs-lockup__mark" aria-hidden="true"><use href="#fs-mark"/></svg>
+        <svg class="fs-lockup__word" aria-hidden="true"><use href="#fs-wordmark"/></svg>
+      </a>
+      <p class="type-body-sm muted">Practical readiness for frontend graduates in Egypt. Payments by Paymob.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================== DEMO APP ============================== -->
+<div id="app" class="app" hidden>
+  <header class="app-bar">
+    <div class="app-bar__inner">
+      <a class="fs-lockup fs-lockup--sm" href="#top" data-exit-demo aria-label="Back to FirstShift home">
+        <svg class="fs-lockup__mark" aria-hidden="true"><use href="#fs-mark"/></svg>
+        <svg class="fs-lockup__word" aria-hidden="true"><use href="#fs-wordmark"/></svg>
+      </a>
+      <div class="app-bar__task">
+        <span class="fs-ticket__id">FS-101</span>
+        <span class="app-bar__title">Checkout payment confirmation</span>
+      </div>
+      <div class="app-bar__who">
+        <svg class="fs-icon" aria-hidden="true"><use href="#i-user"/></svg>
+        <span>Mariam Adel</span>
+        <span class="fs-ref">Sample candidate</span>
+      </div>
+      <button class="fs-btn fs-btn--ghost fs-btn--sm" type="button" data-exit-demo>Exit demo</button>
+    </div>
+    <nav class="app-steps" aria-label="Task progress">
+      <ol class="fs-stepper">
+        <li class="fs-stepper__item" data-step="task"><button class="fs-stepper__btn" type="button"><span class="fs-stepper__num">1</span>Task brief</button></li>
+        <li class="fs-stepper__item" data-step="submit"><button class="fs-stepper__btn" type="button"><span class="fs-stepper__num">2</span>Submission</button></li>
+        <li class="fs-stepper__item" data-step="defend"><button class="fs-stepper__btn" type="button"><span class="fs-stepper__num">3</span>Work defense</button></li>
+        <li class="fs-stepper__item" data-step="report"><button class="fs-stepper__btn" type="button"><span class="fs-stepper__num">4</span>Evidence report</button></li>
+        <li class="fs-stepper__item" data-step="review"><button class="fs-stepper__btn" type="button"><span class="fs-stepper__num">5</span>Human review</button></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <!-- 1 · Task brief -->
+    <section class="view" data-view="task" aria-labelledby="task-title">
+      <div class="view__grid">
+        <article class="fs-ticket">
+          <div class="fs-ticket__head">
+            <span class="fs-ticket__id">FS-101</span>
+            <span class="fs-ticket__meta">Frontend · Payments · Bazaar storefront</span>
+            <span class="fs-ticket__meta fs-ticket__time">Est. 45 min</span>
+          </div>
+          <div class="fs-ticket__body brief">
+            <h1 class="type-title" id="task-title">Checkout says “Payment successful” before the server knows.</h1>
+            <p class="type-body muted">Bazaar is a small online store that takes card payments through Paymob. After paying, the customer lands on <code>/checkout/return?success=true</code>. The app reads that query string, shows the success screen and clears the cart. Support is getting tickets from customers whose cards were declined but who saw “Payment successful”.</p>
+            <div class="fs-code" aria-label="Current code">
+              <div class="fs-code__file"><span>CheckoutReturn.tsx</span><span>current</span></div>
+              <div class="fs-code__line"><span>10</span><span> </span><span>const params = new URLSearchParams(location.search);</span></div>
+              <div class="fs-code__line fs-code__line--focus"><span>11</span><span> </span><span><span class="tok-k">if</span> (params.get(<span class="tok-s">"success"</span>) === <span class="tok-s">"true"</span>) {</span></div>
+              <div class="fs-code__line fs-code__line--focus"><span>12</span><span> </span><span>  clearCart();</span></div>
+              <div class="fs-code__line fs-code__line--focus"><span>13</span><span> </span><span>  <span class="tok-k">return</span> &lt;SuccessScreen /&gt;;</span></div>
+              <div class="fs-code__line"><span>14</span><span> </span><span>}</span></div>
+            </div>
+            <h2 class="type-heading">Your task</h2>
+            <ol class="brief__list">
+              <li>Stop treating the browser redirect as proof of payment.</li>
+              <li>Show success only after the server confirms the order is paid.</li>
+              <li>Design what the customer sees when the payment is pending, failed, or still unknown.</li>
+              <li>Write a short test plan for the cases you think matter.</li>
+            </ol>
+          </div>
+        </article>
+
+        <aside class="view__side">
+          <div class="fs-panel side-block">
+            <p class="fs-label">You’ll submit</p>
+            <ul class="side-list">
+              <li><svg class="fs-icon" aria-hidden="true"><use href="#i-doc"/></svg>A code change or pseudo-diff</li>
+              <li><svg class="fs-icon" aria-hidden="true"><use href="#i-doc"/></svg>A short explanation</li>
+              <li><svg class="fs-icon" aria-hidden="true"><use href="#i-doc"/></svg>A test plan</li>
+              <li><svg class="fs-icon" aria-hidden="true"><use href="#i-prompt"/></svg>A note on how you used AI</li>
+            </ul>
+          </div>
+          <div class="fs-panel side-block">
+            <p class="fs-label">Then</p>
+            <p class="type-body-sm">A short work defense: three questions about your own submission, by voice or text. Expect follow-ups on what you say.</p>
+          </div>
+          <div class="fs-panel side-block side-block--note">
+            <p class="fs-label">About AI tools</p>
+            <p class="type-body-sm">You can use them. Tell us what they helped with and what you checked yourself. We don’t claim to detect AI use.</p>
+          </div>
+          <button class="fs-btn fs-btn--primary fs-btn--lg side-cta" type="button" data-go="submit">Start submission <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 2 · Submission -->
+    <section class="view" data-view="submit" aria-labelledby="submit-title" hidden>
+      <form class="view__grid" id="submit-form" novalidate>
+        <div class="stack-6">
+          <div class="view__head">
+            <h1 class="type-title" id="submit-title">Your submission</h1>
+            <span class="fs-ref">Example answers filled in for the demo</span>
+          </div>
+          <div class="fs-field">
+            <label class="fs-field__label" for="f-diff">Code change</label>
+            <span class="fs-field__hint">Paste a diff or pseudo-diff. Line numbers help the defense point at your code.</span>
+            <textarea class="fs-textarea fs-textarea--code" id="f-diff" rows="9" spellcheck="false">- if (params.get("success") === "true") {
+-   clearCart();
+-   return &lt;SuccessScreen /&gt;;
+- }
++ const { status } = useOrderStatus(orderId, { poll: 3000, timeout: 30000 });
++ if (status === "pending") return &lt;ConfirmingPayment /&gt;;
++ if (status === "paid")    return &lt;SuccessScreen /&gt;;   // cart cleared server-side
++ if (status === "failed")  return &lt;PaymentFailed onRetry={retry} /&gt;;
++ if (status === "unknown") return &lt;StillChecking orderId={orderId} /&gt;;</textarea>
+          </div>
+          <div class="fs-field">
+            <label class="fs-field__label" for="f-why">Explanation</label>
+            <textarea class="fs-textarea" id="f-why" rows="4">The redirect only tells us the customer came back, and anyone can open ?success=true by hand. I moved the decision to the server: the page polls our order endpoint, which is updated by Paymob's webhook, and only shows success when the order is marked paid. The cart is cleared on the server at the same moment.</textarea>
+          </div>
+          <div class="fs-field">
+            <label class="fs-field__label" for="f-tests">Test plan</label>
+            <textarea class="fs-textarea" id="f-tests" rows="4">1. Open /checkout/return?success=true for an unpaid order: no success screen.
+2. Declined card: failed state with a retry button, cart kept.
+3. Webhook arrives late (10 s): pending, then success.
+4. No webhook after 30 s: "still checking" state with order number.</textarea>
+          </div>
+          <fieldset class="fs-field ai-note">
+            <legend class="fs-field__label">How you used AI</legend>
+            <label class="fs-field__hint" for="f-ai-help">What did AI help with?</label>
+            <textarea class="fs-textarea" id="f-ai-help" rows="2">Drafted the useOrderStatus polling hook.</textarea>
+            <label class="fs-field__hint" for="f-ai-check">What did you verify yourself?</label>
+            <textarea class="fs-textarea" id="f-ai-check" rows="2">The status mapping, the failed and unknown states, and the test plan.</textarea>
+          </fieldset>
+          <label class="fs-choice" for="f-own">
+            <input type="checkbox" id="f-own" checked>
+            <span class="type-body-sm">I can explain every line I’m submitting.</span>
+          </label>
+        </div>
+
+        <aside class="view__side">
+          <div class="fs-panel side-block">
+            <p class="fs-label">FS-101 checklist</p>
+            <ul class="side-list side-list--check" id="checklist">
+              <li data-check="diff"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg>Code change</li>
+              <li data-check="why"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg>Explanation</li>
+              <li data-check="tests"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg>Test plan</li>
+              <li data-check="ai"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg>AI usage note</li>
+            </ul>
+          </div>
+          <div class="fs-panel side-block side-block--note">
+            <p class="fs-label">Next: work defense</p>
+            <p class="type-body-sm">About 5 minutes. The interviewer has read your submission and will ask about it.</p>
+          </div>
+          <button class="fs-btn fs-btn--primary fs-btn--lg side-cta" type="submit">Submit and start defense <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <p class="form-error" id="submit-error" role="alert" hidden>Fill in the code change, explanation and test plan before you start the defense.</p>
+        </aside>
+      </form>
+    </section>
+
+    <!-- 3 · Work defense -->
+    <section class="view" data-view="defend" aria-labelledby="defend-title" hidden>
+      <div class="view__grid view__grid--defense">
+        <div class="stack-4">
+          <div class="view__head">
+            <h1 class="type-title" id="defend-title">Work defense</h1>
+            <span class="fs-chip fs-chip--live" id="defense-status">In progress</span>
+          </div>
+          <div class="transcript" id="transcript" aria-live="polite"></div>
+          <div class="composer" id="composer">
+            <label class="fs-field__label" for="f-answer">Your answer</label>
+            <textarea class="fs-textarea" id="f-answer" rows="4"></textarea>
+            <div class="composer__bar">
+              <button class="fs-btn fs-btn--secondary fs-btn--sm" type="button" id="btn-mic" aria-pressed="false"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-mic"/></svg><span>Answer by voice</span></button>
+              <span class="fs-ref">Sample answer filled in for the demo</span>
+              <button class="fs-btn fs-btn--primary fs-btn--sm composer__send" type="button" id="btn-send">Send answer <svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+          <div class="fs-panel defense-done" id="defense-done" hidden>
+            <p class="fs-label">Defense complete · 3 questions · 4 min 12 s</p>
+            <p class="type-body">Your evidence report is ready. A reviewer checks it before it’s final.</p>
+            <button class="fs-btn fs-btn--primary" type="button" data-go="report">See your evidence report <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+
+        <aside class="view__side">
+          <div class="fs-panel side-block">
+            <div class="row-between">
+              <p class="fs-label">This question points at</p>
+              <span class="fs-ref" id="basis-ref">diff −1 to −4</span>
+            </div>
+            <div class="fs-code basis-code" id="basis-code" aria-label="Your submission"></div>
+            <p class="type-body-sm muted" id="basis-note"></p>
+          </div>
+          <button class="fs-btn fs-btn--ghost fs-btn--sm" type="button" data-go="report">Skip to the report</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 4 · Evidence report -->
+    <section class="view" data-view="report" aria-labelledby="report-title" hidden>
+      <div class="view__grid">
+        <article class="stack-6">
+          <header class="report-head">
+            <div class="stack-2">
+              <p class="fs-label">Evidence report · FS-101</p>
+              <h1 class="type-title" id="report-title">Checkout payment confirmation</h1>
+              <p class="type-body-sm muted">Mariam Adel · submitted 24 Oct 2026 · defense 4 min 12 s</p>
+            </div>
+            <span class="fs-chip fs-chip--pending" id="report-status"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-pending"/></svg>Pending mentor review</span>
+          </header>
+
+          <dl class="report-trio">
+            <div><dt class="fs-label">Strength</dt><dd>State reasoning</dd></div>
+            <div><dt class="fs-label">Gap</dt><dd class="gap">Idempotency and uncertain provider outcomes</dd></div>
+            <div><dt class="fs-label">Next practice</dt><dd>Add a safe retry and duplicate-event strategy.</dd></div>
+          </dl>
+
+          <div class="fs-panel">
+            <p class="fs-label">Evidence observed</p>
+            <ul class="fs-evidence-list">
+              <li class="fs-evidence fs-evidence--observed">
+                <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg></span>
+                <div><p class="fs-evidence__claim">Identified redirect-only success as unsafe.</p><p class="fs-evidence__src"><span class="fs-ref">Explanation ¶1</span><span class="fs-ref">Defense Q1 · 00:12</span></p></div>
+                <span class="fs-chip fs-chip--observed">Observed</span>
+              </li>
+              <li class="fs-evidence fs-evidence--observed">
+                <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg></span>
+                <div><p class="fs-evidence__claim">Moved the success decision to a server-confirmed order status.</p><p class="fs-evidence__src"><span class="fs-ref">diff +1 to +3</span></p></div>
+                <span class="fs-chip fs-chip--observed">Observed</span>
+              </li>
+              <li class="fs-evidence fs-evidence--observed">
+                <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-observed"/></svg></span>
+                <div><p class="fs-evidence__claim">Designed pending, failed and unknown states for the customer.</p><p class="fs-evidence__src"><span class="fs-ref">diff +2 to +5</span><span class="fs-ref">Test plan 2–4</span></p></div>
+                <span class="fs-chip fs-chip--observed">Observed</span>
+              </li>
+              <li class="fs-evidence fs-evidence--partial">
+                <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-partial"/></svg></span>
+                <div><p class="fs-evidence__claim">Treated a timeout as “still checking”, but proposed no way to reconcile it with Paymob later.</p><p class="fs-evidence__src"><span class="fs-ref">Defense Q2 · 01:48</span></p></div>
+                <span class="fs-chip fs-chip--partial">Partial</span>
+              </li>
+              <li class="fs-evidence fs-evidence--missing">
+                <span class="fs-evidence__state"><svg class="fs-icon" aria-hidden="true"><use href="#i-missing"/></svg></span>
+                <div><p class="fs-evidence__claim">Did not address duplicate webhook delivery.</p><p class="fs-evidence__src"><span class="fs-ref">Defense Q3 · 03:05</span><span class="fs-ref">not in test plan</span></p></div>
+                <span class="fs-chip fs-chip--missing">Not shown</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="fs-panel ai-disclosure">
+            <p class="fs-label"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-prompt"/></svg> AI use, as disclosed by the candidate</p>
+            <dl class="pair-list">
+              <div><dt>Helped with</dt><dd>Drafting the useOrderStatus polling hook.</dd></div>
+              <div><dt>Verified themselves</dt><dd>The status mapping, the failed and unknown states, and the test plan.</dd></div>
+            </dl>
+          </div>
+
+          <p class="scope-note">This report describes performance on one task. It is not a hiring certification and does not prove unaided work.</p>
+        </article>
+
+        <aside class="view__side">
+          <div class="fs-ticket review-offer">
+            <div class="fs-ticket__head">
+              <span class="fs-ticket__meta">Human review</span>
+              <span class="fs-ticket__meta fs-ticket__time">30 min</span>
+            </div>
+            <div class="fs-ticket__body">
+              <h2 class="fs-ticket__title">Book a code &amp; reasoning review</h2>
+              <p class="type-body-sm muted">A working engineer goes through your gap with you. They get everything before the call:</p>
+              <ul class="side-list side-list--tight">
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-doc"/></svg>Your submission</li>
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-doc"/></svg>The defense transcript</li>
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-doc"/></svg>These findings</li>
+                <li><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-partial"/></svg>The exact gap: idempotency</li>
+              </ul>
+            </div>
+            <div class="fs-ticket__perf" aria-hidden="true"></div>
+            <div class="fs-ticket__stub">
+              <p class="price-line"><span class="price-line__amount">300 EGP</span><span class="type-body-sm muted">one session</span></p>
+              <button class="fs-btn fs-btn--primary fs-btn--lg" type="button" data-go="review">Choose a reviewer <svg class="fs-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 5 · Human review + Paymob -->
+    <section class="view" data-view="review" aria-labelledby="review-title" hidden>
+      <div class="view__grid">
+        <div class="stack-6" id="booking-form">
+          <div class="view__head">
+            <h1 class="type-title" id="review-title">Book your human review</h1>
+            <span class="fs-ref">Sample reviewers</span>
+          </div>
+          <fieldset class="choice-group">
+            <legend class="fs-field__label">Reviewer</legend>
+            <label class="fs-choice reviewer" for="r-youssef">
+              <input type="radio" name="reviewer" id="r-youssef" value="Youssef Kamal" checked>
+              <span class="reviewer__body">
+                <span class="reviewer__name">Youssef Kamal</span>
+                <span class="type-body-sm muted">Senior frontend engineer · checkout and payments</span>
+                <span class="ref-row"><span class="fs-ref">matches gap: idempotency</span></span>
+              </span>
+            </label>
+            <label class="fs-choice reviewer" for="r-nour">
+              <input type="radio" name="reviewer" id="r-nour" value="Nour Hassan">
+              <span class="reviewer__body">
+                <span class="reviewer__name">Nour Hassan</span>
+                <span class="type-body-sm muted">Frontend lead · e-commerce</span>
+                <span class="ref-row"><span class="fs-ref">matches gap: payment states</span></span>
+              </span>
+            </label>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend class="fs-field__label">Time (Cairo)</legend>
+            <div class="slots">
+              <label class="fs-choice slot" for="s-1"><input type="radio" name="slot" id="s-1" value="Sun 26 Oct, 18:00" checked><span>Sun 26 Oct<br><strong>18:00</strong></span></label>
+              <label class="fs-choice slot" for="s-2"><input type="radio" name="slot" id="s-2" value="Sun 26 Oct, 20:00"><span>Sun 26 Oct<br><strong>20:00</strong></span></label>
+              <label class="fs-choice slot" for="s-3"><input type="radio" name="slot" id="s-3" value="Mon 27 Oct, 19:30"><span>Mon 27 Oct<br><strong>19:30</strong></span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <aside class="view__side">
+          <div class="fs-ticket checkout" id="checkout">
+            <div class="fs-ticket__head">
+              <span class="fs-ticket__id">FS-R</span>
+              <span class="fs-ticket__meta">Order summary</span>
+            </div>
+            <div class="fs-ticket__body">
+              <dl class="pair-list">
+                <div><dt>Session</dt><dd>Code &amp; reasoning review, 30 min</dd></div>
+                <div><dt>Reviewer</dt><dd id="sum-reviewer">Youssef Kamal</dd></div>
+                <div><dt>Time</dt><dd id="sum-slot">Sun 26 Oct, 18:00</dd></div>
+                <div><dt>Focus</dt><dd>Idempotency and uncertain provider outcomes</dd></div>
+              </dl>
+            </div>
+            <div class="fs-ticket__perf" aria-hidden="true"></div>
+            <div class="fs-ticket__stub">
+              <p class="price-line"><span class="fs-label">Total</span><span class="price-line__amount">300 EGP</span></p>
+
+              <div class="pay-state" id="pay-idle">
+                <button class="fs-btn fs-btn--hivis fs-btn--lg" type="button" id="btn-pay"><svg class="fs-icon" aria-hidden="true"><use href="#i-lock"/></svg>Pay 300 EGP with Paymob</button>
+                <p class="type-body-sm muted">You’ll finish payment on Paymob’s secure page, then come back here.</p>
+              </div>
+
+              <div class="pay-state" id="pay-pending" hidden>
+                <span class="fs-chip fs-chip--pending"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-pending"/></svg>Confirming payment</span>
+                <p class="type-body-sm">We’re checking with Paymob on our server before we book your reviewer. This usually takes a few seconds.</p>
+                <div class="progress" aria-hidden="true"><span></span></div>
+              </div>
+
+              <div class="pay-state" id="pay-paid" hidden>
+                <span class="fs-chip fs-chip--confirmed"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-observed"/></svg>Payment confirmed</span>
+                <p class="type-heading">Review booked</p>
+                <p class="type-body-sm" id="paid-detail">Youssef Kamal · Sun 26 Oct, 18:00</p>
+                <p class="type-body-sm muted">Your reviewer now has your submission, transcript and findings. You’ll get the call link by email.</p>
+              </div>
+
+              <div class="pay-state" id="pay-failed" hidden>
+                <span class="fs-chip fs-chip--failed"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-failed"/></svg>Payment declined</span>
+                <p class="type-body-sm">Paymob declined the card. You haven’t been charged and nothing was booked.</p>
+                <button class="fs-btn fs-btn--secondary" type="button" data-pay-reset>Try another card</button>
+              </div>
+
+              <div class="pay-state" id="pay-unknown" hidden>
+                <span class="fs-chip fs-chip--unknown"><svg class="fs-icon fs-icon--sm" aria-hidden="true"><use href="#i-unknown"/></svg>Still checking</span>
+                <p class="type-body-sm">We haven’t heard back from Paymob yet. Don’t pay again: we’ll confirm your booking by email as soon as we know, or refund you automatically.</p>
+                <p class="type-body-sm muted">Order <span class="fs-ref">FS-R-2041</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fs-panel demo-ctl">
+            <p class="fs-label">Demo control · Paymob result</p>
+            <div class="demo-ctl__row" role="radiogroup" aria-label="Simulated Paymob result">
+              <label class="demo-ctl__opt" for="o-paid"><input type="radio" name="outcome" id="o-paid" value="paid" checked>Paid</label>
+              <label class="demo-ctl__opt" for="o-failed"><input type="radio" name="outcome" id="o-failed" value="failed">Declined</label>
+              <label class="demo-ctl__opt" for="o-unknown"><input type="radio" name="outcome" id="o-unknown" value="unknown">No answer</label>
+            </div>
+            <p class="type-body-sm muted">Same rule as FS-101: the redirect back from Paymob is never treated as proof of payment.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
